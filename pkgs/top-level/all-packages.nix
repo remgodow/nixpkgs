@@ -29402,6 +29402,8 @@ with pkgs;
 
   fslint = callPackage ../applications/misc/fslint {};
 
+  gamehub = callPackage ../games/gamehub { };
+
   galaxis = callPackage ../games/galaxis { };
 
   gambatte = callPackage ../games/gambatte { };
