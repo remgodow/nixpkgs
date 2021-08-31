@@ -1,7 +1,18 @@
-{ lib, buildPythonPackage, substituteAll, stdenv,
-  fetchPypi, numpy, cython, freetype-py, fontconfig, libGL,
-  setuptools-scm, setuptools-scm-git-archive
-  }:
+{ lib
+, stdenv
+, buildPythonPackage
+, substituteAll
+, fetchPypi
+, cython
+, fontconfig
+, freetype-py
+, hsluv
+, kiwisolver
+, libGL
+, numpy
+, setuptools-scm
+, setuptools-scm-git-archive
+}:
 
 buildPythonPackage rec {
   pname = "vispy";
@@ -21,15 +32,37 @@ buildPythonPackage rec {
   ];
 
   nativeBuildInputs = [
-    cython setuptools-scm setuptools-scm-git-archive
+    cython
+    setuptools-scm
+    setuptools-scm-git-archive
+  ];
+
+  buildInputs = [
+    libGL
   ];
 
   propagatedBuildInputs = [
-    numpy freetype-py fontconfig libGL
+    fontconfig
+    freetype-py
+    hsluv
+    kiwisolver
+    numpy
   ];
 
   doCheck = false;  # otherwise runs OSX code on linux.
-  pythonImportsCheck = [ "vispy" ];
+
+  pythonImportsCheck = [
+    "vispy"
+    "vispy.color"
+    "vispy.geometry"
+    "vispy.gloo"
+    "vispy.glsl"
+    "vispy.io"
+    "vispy.plot"
+    "vispy.scene"
+    "vispy.util"
+    "vispy.visuals"
+  ];
 
   meta = with lib; {
     homepage = "https://vispy.org/index.html";
