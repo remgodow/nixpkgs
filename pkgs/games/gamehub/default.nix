@@ -18,7 +18,6 @@
 , libxml2
 , polkit
 , glib-networking
-, innoextract
 , wrapGAppsHook
 }:
 
@@ -55,13 +54,11 @@ stdenv.mkDerivation rec {
     libxml2
     polkit
     glib-networking
-    innoextract
   ];
 
   meta = with lib; {
     description = "All your games in one place";
     homepage = "https://tkashkin.tk/projects/gamehub/";
-    mantainers = [ maintainers.pasqui23 ];
     license = licenses.gpl3;
     platforms = platforms.linux;
   };
